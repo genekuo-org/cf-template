@@ -74,6 +74,12 @@ t.add_resource(ec2.SecurityGroup(
 ))
 
 ud = Base64(Join('\n', [ "#!/bin/bash",
+"sudo yum update",
+"sudo yum install -y ruby",
+"cd /home/ec2-user",
+"sudo aws s3 cp s3://aws-codedeploy-ap-southeast-1/latest/install .",
+"sudo chmod +x ./install",
+"sudo ./install auto",
 "yum install --enablerepo=epel -y git",
 "yum install --enablerepo=epel -y ansible",
 AnsiblePullCmd,
