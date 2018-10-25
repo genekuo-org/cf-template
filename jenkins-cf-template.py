@@ -109,6 +109,21 @@ t.add_resource(ec2.Instance(
     IamInstanceProfile=Ref("InstanceProfile"),
 ))
 
+t.add_resource(IAMPolicy(
+    "Policy",
+    PolicyName="AllowCodePipeline",
+    PolicyDocument=Policy(
+        Statement=[
+            Statement(
+                Effect=Allow,
+                Action=[Action("codepipeline", "*")],
+                Resource=["*"]
+            )
+        ]
+    ),
+    Roles=[Ref("Role")]
+))
+
 t.add_output(Output(
     "InstancePublicIp",
     Description="Public IP of our instance.",
