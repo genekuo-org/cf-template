@@ -1,0 +1,26 @@
+{
+"category": "Test",
+"provider": "Jenkins",
+"version": "2",
+"settings": {
+"entityUrlTemplate": "http://[Jenkins IP]:8080/job/{Config:ProjectName}",
+"executionUrlTemplate": "http://[Jenkins IP]:8080//job/{Config:ProjectName}/{ExternalExecutionId}"
+},
+"configurationProperties": [{
+"name": "ProjectName",
+"required": true,
+"key": true,
+"secret": false,
+"queryable": true,
+"description": "The name of the build project must be provided when this action is added to the pipeline.",
+"type": "String"
+}],
+"inputArtifactDetails": {
+"maximumCount": 5,
+"minimumCount": 0
+},
+"outputArtifactDetails": {
+"maximumCount": 5,
+"minimumCount": 0
+}
+}
